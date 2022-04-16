@@ -10,7 +10,7 @@ const routes = reactive([
   {
     label: "Home",
     path: "/",
-    icon: "i-mdi-home"
+    icon: "i-mdi-home",
   },
   {
     label: "About us",
@@ -20,12 +20,12 @@ const routes = reactive([
       {
         label: "Our service",
         path: "/about/our-service",
-        icon: "i-mdi-face-agent"
+        icon: "i-mdi-face-agent",
       },
       {
         label: "Our team",
         path: "/about/our-team",
-        icon: "i-mdi-account-group"
+        icon: "i-mdi-account-group",
       },
     ],
     active: false,
@@ -38,12 +38,12 @@ const routes = reactive([
       {
         label: "Online class",
         path: "/classes/online-class",
-        icon: "i-mdi-television-classic"
+        icon: "i-mdi-television-classic",
       },
       {
         label: "Offline class",
         path: "/classes/offline-class",
-        icon: "i-mdi-human-male-board"
+        icon: "i-mdi-human-male-board",
       },
     ],
     active: false,
@@ -56,12 +56,12 @@ const routes = reactive([
       {
         label: "School in Hangzhou",
         path: "/living-in-hangzhou/school-in-hangzhou",
-        icon: "i-mdi-school"
+        icon: "i-mdi-school",
       },
       {
         label: "Tours in Hangzhou",
         path: "/living-in-hangzhou/tours-in-hangzhou",
-        icon: "i-mdi-train-car"
+        icon: "i-mdi-train-car",
       },
     ],
     active: false,
@@ -74,22 +74,22 @@ const routes = reactive([
       {
         label: "One sentence a day",
         path: "/living-in-hangzhou/school-in-hangzhou",
-        icon: "i-mdi-chat"
+        icon: "i-mdi-chat",
       },
       {
         label: "Tongue twist",
         path: "/living-in-hangzhou/tours-in-hangzhou",
-        icon: "i-mdi-thumb-up"
+        icon: "i-mdi-thumb-up",
       },
       {
         label: "Traditional culture",
         path: "/living-in-hangzhou/tours-in-hangzhou",
-        icon: "i-mdi-silverware-variant"
+        icon: "i-mdi-silverware-variant",
       },
       {
         label: "Spoken Chinese",
         path: "/living-in-hangzhou/tours-in-hangzhou",
-        icon: "i-mdi-emoticon-excited-outline"
+        icon: "i-mdi-emoticon-excited-outline",
       },
     ],
     active: false,
@@ -97,30 +97,48 @@ const routes = reactive([
   {
     label: "Contact us",
     path: "/contact-us",
-    icon: "i-mdi-email-outline"
-  }
-])
+    icon: "i-mdi-email-outline",
+  },
+]);
 const router = useRouter();
 const $route = useRoute();
 const handleRoute = function (route: route) {
-  console.log(route.path)
+  console.log(route.path);
   if (route.sub) {
-    routes.forEach(r => {
+    routes.forEach((r) => {
       if (r.active && r.path !== route.path) {
         r.active = false;
       }
-    })
+    });
     route.active = !route.active;
   } else {
     router.push(route.path ?? "/");
   }
-}
-const isActive = function (route: route) :boolean{
- return $route.path === route.path || (route.sub && route.sub.some(r => isActive(r))) || false;
-}
+};
+const isActive = function (route: route): boolean {
+  return (
+    $route.path === route.path ||
+    (route.sub && route.sub.some((r) => isActive(r))) ||
+    false
+  );
+};
 </script>
 <template>
-  <nav min-w-240px shadow-lg flex flex-col items-center py-10 bg-surface>
+  <nav
+    h-100vh
+    overflow-y-auto
+    scrollbar
+    scrollbar-rounded
+    dark:scrollbar-track-color-transparent
+    dark:scrollbar-thumb-color-gray-800
+    min-w-240px
+    shadow-lg
+    flex
+    flex-col
+    items-center
+    py-10
+    bg-surface
+  >
     <img src="/logo.png" w-80px h-auto mb-3 />
     <img src="/studio.png" w-100px h-auto mb-6 />
     <div divider-h mb-5></div>
@@ -131,12 +149,21 @@ const isActive = function (route: route) :boolean{
       v-for="route of routes"
       :key="route.label"
     >
-      <div :class="isActive(route)?'underline text-blue-400':''" flex items-center gap-4 ml-4 py-4 px-3 @click="handleRoute(route)">
+      <div
+        :class="isActive(route) ? 'underline text-blue-400' : ''"
+        flex
+        items-center
+        gap-4
+        ml-4
+        py-4
+        px-3
+        @click="handleRoute(route)"
+      >
         <i :class="route.icon" />
         <span>{{ route.label }}</span>
       </div>
       <CollapseTransition>
-        <nav  v-if="route.sub && route.active" min-w-150px ml-10 flex flex-col items-start>
+        <nav v-if="route.sub && route.active" min-w-150px ml-10 flex flex-col items-start>
           <div
             class="navigation-item-sub"
             py-2
@@ -146,7 +173,13 @@ const isActive = function (route: route) :boolean{
             v-for="sub in route.sub"
             :key="sub.label"
           >
-            <div :class="isActive(route)?'underline text-blue-400':''" flex items-center gap-4 @click="handleRoute(route)">
+            <div
+              :class="isActive(route) ? 'underline text-blue-400' : ''"
+              flex
+              items-center
+              gap-4
+              @click="handleRoute(route)"
+            >
               <i :class="sub.icon" />
               <span>{{ sub.label }}</span>
             </div>

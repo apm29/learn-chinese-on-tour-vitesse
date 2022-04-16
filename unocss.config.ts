@@ -8,6 +8,7 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
+import { presetScrollbar } from 'unocss-preset-scrollbar'
 
 export default defineConfig({
   shortcuts: [
@@ -20,6 +21,7 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
+    presetScrollbar(),
     presetIcons({
       scale: 1.2,
       warn: true,
