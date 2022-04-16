@@ -103,7 +103,7 @@ const routes = reactive([
 const router = useRouter();
 const $route = useRoute();
 const handleRoute = function (route: route) {
-  console.log(route.path);
+  //存在子路由时展开,否则直接导航到该路径
   if (route.sub) {
     routes.forEach((r) => {
       if (r.active && r.path !== route.path) {
