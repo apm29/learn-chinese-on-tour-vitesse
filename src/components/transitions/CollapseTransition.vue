@@ -2,6 +2,7 @@
 const transitionStyle = "0.2s height ease-in-out";
 const transition = {
   //这些钩子是vue中transiton标签的一些钩子方法
+  //TODO 原有style需要backup
   beforeEnter(el:HTMLElement) {
     el.style.transition = transitionStyle;
     el.style.height = "0";

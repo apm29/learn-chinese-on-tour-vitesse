@@ -102,7 +102,7 @@ const routes = reactive([
 ]);
 const router = useRouter();
 const $route = useRoute();
-const handleRoute = function (route: route) {
+const handleNavigation = function (route: route) {
   //存在子路由时展开,否则直接导航到该路径
   if (route.sub) {
     routes.forEach((r) => {
@@ -112,7 +112,9 @@ const handleRoute = function (route: route) {
     });
     route.active = !route.active;
   } else {
-    router.push(route.path ?? "/");
+    if ($route.path !== route.path) {
+      router.push(route.path ?? "/");
+    }
   }
 };
 const isActive = function (route: route): boolean {
@@ -122,15 +124,17 @@ const isActive = function (route: route): boolean {
     false
   );
 };
+routes.forEach((r) => {
+  if (isActive(r)) {
+    r.active = true;
+  }
+});
 </script>
 <template>
   <nav
     h-100vh
     overflow-y-auto
-    scrollbar
-    scrollbar-rounded
-    dark:scrollbar-track-color-transparent
-    dark:scrollbar-thumb-color-gray-800
+    colored-scrollbar
     min-w-240px
     shadow-lg
     flex
@@ -140,12 +144,13 @@ const isActive = function (route: route): boolean {
     bg-surface
   >
     <img src="/logo.png" w-80px h-auto mb-3 />
-    <img src="/studio.png" w-100px h-auto mb-6 />
+    <img src="/studio.png" w-100px h-auto mb-6 dark:filter dark:filter-grayscale-100 />
     <div divider-h mb-5></div>
     <div
       class="navigation-item"
       self-start
       btn-on-bg-surface
+      font-bold
       v-for="route of routes"
       :key="route.label"
     >
@@ -157,28 +162,35 @@ const isActive = function (route: route): boolean {
         ml-4
         py-4
         px-3
-        @click="handleRoute(route)"
+        @click="handleNavigation(route)"
       >
         <i :class="route.icon" />
         <span>{{ route.label }}</span>
       </div>
       <CollapseTransition>
-        <nav v-if="route.sub && route.active" min-w-150px ml-10 flex flex-col items-start>
+        <nav
+          v-show="route.sub && route.active"
+          min-w-150px
+          ml-10
+          flex
+          flex-col
+          items-start
+        >
           <div
             class="navigation-item-sub"
             py-2
             px-3
             text-sm
             btn-on-bg-surface
-            v-for="sub in route.sub"
+            v-for="sub in route.sub || []"
             :key="sub.label"
+            @click="handleNavigation(sub)"
           >
             <div
-              :class="isActive(route) ? 'underline text-blue-400' : ''"
+              :class="isActive(sub) ? 'underline text-blue-400' : ''"
               flex
               items-center
               gap-4
-              @click="handleRoute(route)"
             >
               <i :class="sub.icon" />
               <span>{{ sub.label }}</span>
