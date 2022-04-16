@@ -9,7 +9,7 @@ interface route {
 const routes = reactive([
   {
     label: "Home",
-    path: "/home",
+    path: "/",
     icon: "i-mdi-home"
   },
   {
@@ -135,8 +135,8 @@ const isActive = function (route: route) :boolean{
         <i :class="route.icon" />
         <span>{{ route.label }}</span>
       </div>
-      <Transition v-if="route.sub && route.active">
-        <nav min-w-150px ml-10>
+      <CollapseTransition>
+        <nav  v-if="route.sub && route.active" min-w-150px ml-10 flex flex-col items-start>
           <div
             class="navigation-item-sub"
             py-2
@@ -152,7 +152,7 @@ const isActive = function (route: route) :boolean{
             </div>
           </div>
         </nav>
-      </Transition>
+      </CollapseTransition>
     </div>
   </nav>
 </template>

@@ -12,6 +12,7 @@ specifiers:
   '@vue/test-utils': ^2.0.0-rc.19
   '@vueuse/core': ^8.2.5
   '@vueuse/head': ^0.7.5
+  animate.css: ^4.1.1
   critters: ^0.0.16
   cross-env: ^7.0.3
   cypress: ^9.5.3
@@ -46,6 +47,7 @@ specifiers:
 dependencies:
   '@vueuse/core': 8.2.5_vue@3.2.31
   '@vueuse/head': 0.7.5_vue@3.2.31
+  animate.css: 4.1.1
   nprogress: 0.2.0
   pinia: 2.0.13_typescript@4.6.3+vue@3.2.31
   prism-theme-vars: 0.2.2
@@ -2288,6 +2290,10 @@ packages:
       require-from-string: 2.0.2
       uri-js: 4.4.1
     dev: true
+
+  /animate.css/4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
+    dev: false
 
   /ansi-colors/4.1.1:
     resolution: {integrity: sha512-JoX0apGbHaUJBNl6yF+p6JAFYZ666/hhCGKN5t9QFjbJQKUU/g8MNbFDbvfrgKXvI1QpZplPOnwIo99lX/AAmA==}
