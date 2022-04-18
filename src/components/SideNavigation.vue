@@ -141,7 +141,7 @@ routes.forEach((r) => {
     flex-col
     items-center
     py-10
-    bg-surface
+    bg-surface-secondary
   >
     <img src="/logo.png" w-80px h-auto mb-3 />
     <img src="/studio.png" w-100px h-auto mb-6 dark:filter dark:filter-grayscale-100 />
