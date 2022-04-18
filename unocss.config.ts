@@ -17,8 +17,12 @@ export default defineConfig({
     ['divider-h', 'h-1px w-9/10 bg-gray-400/30 block'],
     ['btn-on-bg-surface','cursor-pointer inline-block select-none hover:text-green-600 dark:hover:text-green-200 text-gray-500 dark:text-gray-400'],
     ['btn-primary','cursor-pointer inline-block select-none transition-all hover:shadow-lg hover:text-blue-600 hover:bg-purple-300 text-white bg-blue-300 rounded-full px-4 py-2'],
+    ['btn-send','cursor-pointer inline-block select-none transition-all hover:shadow-lg  hover:bg-blue-600 text-white bg-dark-300 rounded px-4 py-2'],
     ["bg-surface","bg-gray-100 dark:bg-dark-500 text-gray-500/60"],
     ["bg-surface-secondary","bg-white dark:bg-dark-400 text-gray-500/60"],
+    ["title-1","text-2xl font-bold text-gray-700 dark:text-gray-200 "],
+    ["title-2","text-xl font-normal text-gray-500/80"],
+    ["link","hover:text-blue-500 transition-colors flex items-center"],
     ["colored-scrollbar","scrollbar scrollbar-rounded dark:scrollbar-track-color-transparent dark:scrollbar-thumb-color-gray-800"],
   ],
   presets: [

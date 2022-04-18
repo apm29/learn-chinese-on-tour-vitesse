@@ -73,10 +73,10 @@ const teachers: Teacher[] = [
       justify-center
       items-center
     >
-      <h1 text-4xl font-extrabold text-gray-800 text-shadow dark:text-white>
+      <h1 text-4xl font-extrabold title-1>
         {{ t("study-mandarin-on-tour") }}
       </h1>
-      <h5 text-3xl text-gray-500 dark:text-gray-100>
+      <h5 text-3xl text-gray-500 dark:text-gray-300>
         {{ t("want-to-learn-chinese") }}
       </h5>
       <div class="flex gap-4">
@@ -85,6 +85,9 @@ const teachers: Teacher[] = [
       </div>
     </div>
   </div>
+   <h1 class='title-1 self-start h-16 ml-6 mt-8'>
+      Meet Our Full-time Mandarin Teachers On tour in Hangzhou
+    </h1>
   <div
     class="teachers-grid grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 grid-cols-1 gap-4 px-6 pb-32 pt-16"
   >
@@ -102,7 +105,7 @@ const teachers: Teacher[] = [
       hover:-translate-x-1
       hover:-translate-y-1
       transform
-      hover:shadow-2xl
+      hover:shadow-xl
       bg-surface
     >
       <img
@@ -135,11 +138,11 @@ const teachers: Teacher[] = [
       </div>
     </div>
   </div>
-   <div class='why-us__container grid grid-cols-1 max-w-full px-24 mt-8'>
-    <h1 class='text-2xl font-bold text-gray-800 dark:text-gray-200 self-start col-span-full h-16'>
+   <div class='why-us__container px-6 mt-8'>
+    <h1 class='title-1 self-start col-span-full h-16'>
       Why Us
     </h1>
-   <ol class='why-us__list text-lg mb-3 font-serif list-decimal'>
+   <ol class='why-us__list px-6 text-lg mb-3 list-decimal font-sans'>
      <li>Flexibility – you decide where and when you would like to have your class with our private Mandarin tutor.</li>
      <li>Mandarin Learning Materials – access to all of our course books and online courses.</li>
      <li>We offer the basic classes online and touch the real culture offline.</li>
@@ -150,6 +153,9 @@ const teachers: Teacher[] = [
        co-operation international education agency which is a legitimate education company licensed by the government.</li>
    </ol>
   </div>
+  <h1 mx-auto my-8 class='title-1 self-start col-span-full h-16'>{{ t("get-trail-lesson") }}</h1>
+  <ContactForm  mx-auto min-w-full md:min-w-600px/>
+  <ContactUs  mx-auto min-w-full md:min-w-600px/>
 </template>
 
 <route lang="yaml">

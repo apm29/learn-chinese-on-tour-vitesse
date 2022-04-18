@@ -5,10 +5,13 @@
 declare module 'vue' {
   export interface GlobalComponents {
     CollapseTransition: typeof import('./components/transitions/CollapseTransition.vue')['default']
+    ContactForm: typeof import('./components/ContactForm.vue')['default']
+    ContactUs: typeof import('./components/ContactUs.vue')['default']
     Counter: typeof import('./components/Counter.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     README: typeof import('./components/README.md')['default']
     SideNavigation: typeof import('./components/SideNavigation.vue')['default']
+    Textfield: typeof import('./components/form/textfield.vue')['default']
   }
 }
 
