@@ -11,6 +11,7 @@ declare module 'vue' {
     Footer: typeof import('./components/Footer.vue')['default']
     README: typeof import('./components/README.md')['default']
     SideNavigation: typeof import('./components/SideNavigation.vue')['default']
+    SiteInfo: typeof import('./components/SiteInfo.vue')['default']
     Textfield: typeof import('./components/form/textfield.vue')['default']
   }
 }

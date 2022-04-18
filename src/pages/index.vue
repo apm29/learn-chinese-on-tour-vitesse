@@ -80,8 +80,8 @@ const teachers: Teacher[] = [
         {{ t("want-to-learn-chinese") }}
       </h5>
       <div class="flex gap-4">
-        <button btn-primary capitalize>{{ t("get-started") }}</button>
-        <button btn-primary capitalize>{{ t("one-on-one-class") }}</button>
+        <a href="/contact-us" btn-primary capitalize>{{ t("get-started") }}</a>
+        <a href="/contact-us" btn-primary capitalize>{{ t("one-on-one-class") }}</a>
       </div>
     </div>
   </div>
@@ -132,7 +132,7 @@ const teachers: Teacher[] = [
           {{ teacher.name }}
         </h2>
         <div class="mt-4 text-sm font-bold text-gray-400">Students Says...</div>
-        <p class="teacher-intro__text text-gray-500 font-serif break-all">
+        <p class="teacher-intro__text text-gray-500 font-sans">
           {{ teacher.desc }}
         </p>
       </div>
