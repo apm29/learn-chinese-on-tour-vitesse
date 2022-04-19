@@ -61,12 +61,11 @@ const teachers: Teacher[] = [
       top-0
       left-0
       bottom-0
+      p-3
       right-0
       backdrop="~ blur-sm"
-      bg-white
-      bg-gradient-to-b
+      bg="white gradient-to-b opacity-60"
       class="dark:from-gray-900/70 dark:to-gray-400/60"
-      bg-opacity-60
       flex
       flex-col
       gap-5
@@ -153,9 +152,9 @@ const teachers: Teacher[] = [
        co-operation international education agency which is a legitimate education company licensed by the government.</li>
    </ol>
   </div>
-  <h1 mx-auto my-8 class='title-1 self-start col-span-full h-16'>{{ t("get-trail-lesson") }}</h1>
-  <ContactForm  mx-auto min-w-full md:min-w-600px/>
-  <ContactUs  mx-auto min-w-full md:min-w-600px/>
+  <h1 mx-auto my-8 px-6 class='title-1 self-start col-span-full h-16'>{{ t("get-trail-lesson") }}</h1>
+  <ContactForm  px-6 mx-auto min-w-full md:min-w-600px/>
+  <ContactUs px-6 mx-auto min-w-full md:min-w-600px/>
 </template>
 
 <route lang="yaml">

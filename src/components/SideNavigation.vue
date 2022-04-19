@@ -129,13 +129,19 @@ routes.forEach((r) => {
     r.active = true;
   }
 });
+const showNavigation = $ref(true);
 </script>
 <template>
   <nav
+    :style="{
+      width: showNavigation ? '240px' : '0px',
+    }"
+    flex-shrink="0"
     h-100vh
+    transition-all
+    ease-in-out
     overflow-y-auto
     colored-scrollbar
-    min-w-240px
     shadow-lg
     flex
     flex-col
@@ -155,7 +161,7 @@ routes.forEach((r) => {
       :key="route.label"
     >
       <div
-        :class="isActive(route) ? 'underline text-blue-400' : ''"
+        :class="isActive(route) ? 'underline text-blue-600' : ''"
         flex
         items-center
         gap-4
@@ -187,7 +193,7 @@ routes.forEach((r) => {
             @click="handleNavigation(sub)"
           >
             <div
-              :class="isActive(sub) ? 'underline text-blue-400' : ''"
+              :class="isActive(sub) ? 'underline text-blue-600' : ''"
               flex
               items-center
               gap-4
@@ -199,5 +205,23 @@ routes.forEach((r) => {
         </nav>
       </CollapseTransition>
     </div>
+    <button @click="showNavigation = false" rounded-r py-1 px-2 icon-btn>
+      <div i-mdi-backburger />
+    </button>
   </nav>
+  <button
+    v-if="!showNavigation"
+    @click="showNavigation = true"
+    fixed
+    bottom-8
+    left-0
+    z-100
+    bg-surface
+    rounded-r
+    py-1
+    px-2
+    icon-btn
+  >
+    <div i-mdi-menu-open />
+  </button>
 </template>
