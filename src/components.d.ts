@@ -8,6 +8,7 @@ declare module 'vue' {
     ContactForm: typeof import('./components/ContactForm.vue')['default']
     ContactUs: typeof import('./components/ContactUs.vue')['default']
     Counter: typeof import('./components/Counter.vue')['default']
+    FadeTransition: typeof import('./components/transitions/FadeTransition.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     README: typeof import('./components/README.md')['default']
     SideNavigation: typeof import('./components/SideNavigation.vue')['default']
