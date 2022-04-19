@@ -31,5 +31,8 @@ const toggleLocales = () => {
     <a class="icon-btn mx-2" rel="noreferrer" href="https://github.com/apm29" target="_blank" title="GitHub">
       <div i-carbon-logo-github />
     </a>
+    <router-link class="icon-btn mx-2" to="/test" title="GitHub">
+      <div i-carbon-rule-test />
+    </router-link>
   </nav>
 </template>

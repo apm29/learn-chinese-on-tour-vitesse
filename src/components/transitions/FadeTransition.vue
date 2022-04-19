@@ -3,6 +3,7 @@ import anime from "animejs";
 const onBeforeEnter = function (el: HTMLElement) {
   console.log("brefore enter");
   el.style.transition = "opacity 0.5s ease-in-out";
+  el.style.opacity = "0";
 };
 const onEnter = function (el: HTMLElement, done: Function) {
   console.log("enter");
@@ -11,7 +12,6 @@ const onEnter = function (el: HTMLElement, done: Function) {
     duration: 500,
     opacity: [0, 1],
     complete: () => done(),
-    easing: "easInOutQuad",
   });
 };
 
@@ -20,6 +20,8 @@ const onAfterEnter = function (el: HTMLElement) {
 };
 const onBeforeLeave = function (el: HTMLElement) {
   console.log("before leave");
+  el.style.transition = "opacity 0.5s ease-in-out";
+  el.style.opacity = "1";
 };
 const onLeave = function (el: HTMLElement, done: Function) {
   console.log("leave");
