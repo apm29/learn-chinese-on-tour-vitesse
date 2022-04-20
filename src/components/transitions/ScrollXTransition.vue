@@ -1,16 +1,34 @@
 <script setup lang="ts">
 import anime from "animejs";
+import { TransitionGroup, Transition } from "vue";
+const props = defineProps({
+  delay: {
+    type: Number,
+    default: 0,
+  },
+  duration: {
+    type: Number,
+    default: 300,
+  },
+   group: {
+    type: Boolean,
+    default: false,
+  },
+});
 const onBeforeEnter = function (el: HTMLElement) {
   console.log("brefore enter");
-  el.style.transition = "transform 0.5s ease-in-out";
-  el.style.transform = "translateX(-100%)";
+  anime.set(el, {
+    translateX: "-100%",
+  });
 };
 const onEnter = function (el: HTMLElement, done: Function) {
-  console.log("enter");
+  console.log("enter",window.getComputedStyle(el).backgroundColor);
   anime({
     targets: [el],
-    duration: 500,
-    translateX: ["-100%", "0%"],
+    duration: props.duration,
+    delay: props.delay,
+    translateX: ["-100%","0%"],
+    easing: 'linear',
     complete: () => done(),
   });
 };
@@ -20,15 +38,18 @@ const onAfterEnter = function (el: HTMLElement) {
 };
 const onBeforeLeave = function (el: HTMLElement) {
   console.log("before leave");
-  el.style.transition = "transform 0.5s ease-in-out";
-  el.style.transform = "translateX(0%)";
+  anime.set(el, {
+    translateX: "0%",
+  });
 };
 const onLeave = function (el: HTMLElement, done: Function) {
-  console.log("leave");
+  console.log("leave",window.getComputedStyle(el).backgroundColor);
   anime({
     targets: [el],
-    duration: 500,
-     translateX: ["0%","-100%"],
+    duration: props.duration,
+    delay: props.delay,
+    translateX: ["0%","100%"],
+    easing: 'linear',
     complete: () => done(),
   });
 };
@@ -38,16 +59,18 @@ const onAfterLeave = function (el: HTMLElement) {
 };
 </script>
 <template>
-  <Transition
+  <Component
+    :is="props.group ? TransitionGroup : Transition"
     @before-enter="onBeforeEnter"
     @enter="onEnter"
     @leave="onLeave"
     @after-enter="onAfterEnter"
     @before-leave="onBeforeLeave"
     @after-leave="onAfterLeave"
-    mode="out-in"
     v-bind="$attrs"
+    :css="false"
+    mode="out-in"
   >
     <slot />
-  </Transition>
+  </Component>
 </template>

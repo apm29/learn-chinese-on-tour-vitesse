@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import anime from "animejs";
 import { TransitionGroup, Transition } from "vue";
+const attrs = useAttrs();
 const props = defineProps({
   delay: {
     type: Number,
@@ -18,16 +19,17 @@ const props = defineProps({
 const onBeforeEnter = function (el: HTMLElement) {
   console.log("brefore enter");
   anime.set(el, {
-    opacity: "0",
+    translateX: "100%",
   });
 };
 const onEnter = function (el: HTMLElement, done: Function) {
-  console.log("enter");
+  console.log("enter", window.getComputedStyle(el).backgroundColor);
   anime({
     targets: [el],
     duration: props.duration,
     delay: props.delay,
-    opacity: [0, 1],
+    translateX: ["100%", "0%"],
+    easing: "linear",
     complete: () => done(),
   });
 };
@@ -38,16 +40,17 @@ const onAfterEnter = function (el: HTMLElement) {
 const onBeforeLeave = function (el: HTMLElement) {
   console.log("before leave");
   anime.set(el, {
-    opacity: "1",
+    translateX: "0%",
   });
 };
 const onLeave = function (el: HTMLElement, done: Function) {
-  console.log("leave");
+  console.log("leave", window.getComputedStyle(el).backgroundColor);
   anime({
     targets: [el],
     duration: props.duration,
     delay: props.delay,
-    opacity: [1, 0],
+    translateX: ["0%", "-100%"],
+    easing: "linear",
     complete: () => done(),
   });
 };
@@ -65,9 +68,9 @@ const onAfterLeave = function (el: HTMLElement) {
     @after-enter="onAfterEnter"
     @before-leave="onBeforeLeave"
     @after-leave="onAfterLeave"
-    mode="out-in"
-    v-bind="$attrs"
+    v-bind="attrs"
     :css="false"
+    mode="out-in"
   >
     <slot />
   </Component>
